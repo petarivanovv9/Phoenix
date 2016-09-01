@@ -6,3 +6,29 @@
     font-family: 'Gloria Hallelujah', cursive;
     font-size: 3em;
 }
+
+header {
+  height: 53px;
+  background-color: #E74C3C;
+  width: 100%;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+header .logo {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  font-size: 1.5em;
+}
+
+header .logo a {
+  text-decoration: none;
+  color: #fff;
+  font-family: 'Gloria Hallelujah', cursive;
+  transition: : color 0.3s;
+}
+
+header .logo a:hover {
+  color: #2C3E50;
+}
