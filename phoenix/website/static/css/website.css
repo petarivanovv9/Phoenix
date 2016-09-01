@@ -1,10 +1,8 @@
 /* website app main css */
 
-.front_or {
-    text-align: center;
-    color: #2C3E50;
-    font-family: 'Gloria Hallelujah', cursive;
-    font-size: 3em;
+.pure-button-primary {
+  background-color: #E74C3C;
+  text-align: center;
 }
 
 header {
@@ -33,6 +31,25 @@ header .logo a:hover {
   color: #2C3E50;
 }
 
+.front_or {
+  text-align: center;
+  color: #2C3E50;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 3em;
+}
+
 .form-wrap {
   padding: 30px 80px;
+}
+
+.form-wrap input {
+  margin-bottom: 0.5em;
+}
+
+.form-wrap legend {
+  font-size: 1.5em;
+}
+
+.green-button {
+  background-color: #1ABC9C;
 }
