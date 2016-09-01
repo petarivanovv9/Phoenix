@@ -32,3 +32,7 @@ header .logo a {
 header .logo a:hover {
   color: #2C3E50;
 }
+
+.form-wrap {
+  padding: 30px 80px;
+}

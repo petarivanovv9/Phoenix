@@ -3,16 +3,20 @@
 {% block 'home' %}
 
 
-<div>
-  Login
+<div class="pure-u-1 pure-u-md-1-3">
+  <a href="{% url 'website:login' %}">
+    Login
+  </a>
 </div>
 
-<div>
+<div class="pure-u-1 pure-u-md-1-3">
   <h2 class="front_or">OR</h2>
 </div>
 
-<div>
-  SignUp
+<div class="pure-u-1 pure-u-md-1-3">
+  <a href="{% url 'website:register' %}">
+    Register
+  </a>
 </div>
 
 {% endblock %}
