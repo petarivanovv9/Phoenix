@@ -1,2 +1,2 @@
 # Phoenix
-self destructive message application
+Django web application
