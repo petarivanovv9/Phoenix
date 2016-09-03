@@ -2,7 +2,7 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from .forms import (LoginForm)
+from .forms import (LoginForm, RegisterForm)
 from .decorators import anonymous_required
 
 
@@ -29,4 +29,14 @@ def log_in(request):
 
 @anonymous_required(redirect_url=reverse_lazy('website:index'))
 def register(request):
+    form = RegisterForm()
+    if request.method == 'POST':
+        if request.POST.get("password", "") != request.POST.get("password2", ""):
+            error = "Incorrect passwords"
+            return render(request, "auth/register.html", locals())
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect(reverse('website:index'))
     return render(request, "auth/register.html", locals())
