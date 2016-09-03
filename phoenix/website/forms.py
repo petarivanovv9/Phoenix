@@ -25,6 +25,13 @@ class RegisterForm(forms.Form):
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
 
+    def clean_username(self):
+        username = self.cleaned_data.get("username")
+        user = get_or_none(User, username=username)
+        if user is not None:
+            raise ValidationError("User already exists.")
+        return username
+
     def clean_password(self):
         password = self.cleaned_data.get("password")
         self._validate_password_strength(password)
@@ -34,7 +41,7 @@ class RegisterForm(forms.Form):
         email = self.cleaned_data.get("email")
         user = get_or_none(User, email=email)
         if user is not None:
-            raise ValidationError(_("Потребител с такъв email вече съществува"))
+            raise ValidationError("User already exists.")
         return email
 
     def save(self):
