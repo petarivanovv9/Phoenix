@@ -40,3 +40,9 @@ def register(request):
             login(request, user)
             return redirect(reverse('website:index'))
     return render(request, "auth/register.html", locals())
+
+
+@login_required
+def log_out(request):
+    logout(request)
+    return redirect(reverse('website:index'))
