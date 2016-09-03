@@ -1,3 +1,4 @@
+from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
 
 
@@ -17,7 +18,7 @@ def validate_password(value):
 
     if len(value) <= min_length:
         raise ValidationError(_('Password must be at least {0} characters '
-                                'long.').format(min_length))
+                                'long.'.format(min_length)))
 
     # check for digit
     if not any(char.isdigit() for char in value):

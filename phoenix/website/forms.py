@@ -1,6 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 from .helpers import get_or_none, validate_password
 
@@ -29,7 +30,7 @@ class RegisterForm(forms.Form):
         username = self.cleaned_data.get("username")
         user = get_or_none(User, username=username)
         if user is not None:
-            raise ValidationError("User already exists.")
+            raise ValidationError(_("User already exists."))
         return username
 
     def clean_password(self):
@@ -41,7 +42,7 @@ class RegisterForm(forms.Form):
         email = self.cleaned_data.get("email")
         user = get_or_none(User, email=email)
         if user is not None:
-            raise ValidationError("User already exists.")
+            raise ValidationError(_("User already exists."))
         return email
 
     def save(self):
