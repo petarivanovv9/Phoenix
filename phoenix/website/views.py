@@ -27,5 +27,6 @@ def log_in(request):
     return render(request, "auth/login.html", locals())
 
 
+@anonymous_required(redirect_url=reverse_lazy('website:index'))
 def register(request):
     return render(request, "auth/register.html", locals())
