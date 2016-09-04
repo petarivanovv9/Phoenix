@@ -38,9 +38,9 @@ class TestWebsite(TestCase):
     def test_index(self):
         url = reverse('website:index')
         response = self.client.get(url)
+
         self.assertEqual(response.status_code, 200)
 
-    #@skip("There some errors in the test")
     def test_login_from_active_user(self):
         url = reverse('website:login')
         self.user.is_active = True
@@ -51,14 +51,10 @@ class TestWebsite(TestCase):
             'password': UserFactory.password
         }
 
-        #login = self.client.login(username=self.user.username, password=UserFactory.password)
-        #self.assertEqual(login, True)
-
         response = self.client.post(url, data, follow=True)
 
         print(response.redirect_chain)
         #self.response_302(response)
-        #response = self.client.get(url)
         self.assertContains(response, 'OR')
         self.assertRedirects(response, reverse('website:index'))
 
@@ -66,12 +62,14 @@ class TestWebsite(TestCase):
         url = reverse('website:login')
         self.user.is_active = False
         self.user.save()
+
         data = {
             'username': self.user.username,
             'password': UserFactory.password
         }
 
         response = self.client.post(url, data)
+
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.context['error'],
                          'Invalid username or password')
@@ -102,21 +100,18 @@ class TestWebsite(TestCase):
                          'Invalid username or password')
         self.assertEqual(response.status_code, 200)
 
-    #@skip("There some errors in the test")
     def test_logout(self):
         self.user.is_active = True
         self.user.save()
         url = reverse('website:logout')
-        print(url)
-        # login = self.client.login(username=self.user.username, password=UserFactory.password)
-        # self.assertEqual(login, True)
+        self.client.login(username=self.user.username, password=UserFactory.password)
+
         response = self.client.get(url, follow=True)
 
         print(response.redirect_chain)
-
         #self.response_302(response)
-        #self.assertContains(response, 'OR')
-        #self.assertRedirects(response, reverse('website:index'))
+        self.assertContains(response, 'OR')
+        self.assertRedirects(response, reverse('website:index'))
 
     def test_logout_login_required(self):
         url = reverse('website:logout')
