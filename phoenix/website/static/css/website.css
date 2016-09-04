@@ -7,7 +7,7 @@
 
 header {
   height: 53px;
-  background-color: #E74C3C;
+  background-color: #00b0eb;
   width: 100%;
   margin-bottom: 40px;
   position: relative;
@@ -28,7 +28,17 @@ header .logo a {
 }
 
 header .logo a:hover {
-  color: #2C3E50;
+  color: #222;
+}
+
+.front_login {
+  font-size: 2em;
+  text-align: center;
+}
+
+.front_reg {
+  font-size: 2em;
+  text-align: center;
 }
 
 .front_or {
