@@ -8,7 +8,7 @@ from .helpers import get_or_none, validate_password
 
 class LoginForm(forms.Form):
     username = forms.CharField(
-        label="Username",
+        label='',
         widget=forms.TextInput(attrs={'class': 'pure-input-1', 'placeholder': 'Username', 'autofocus': ''}))
     password = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'pure-input-1', 'placeholder': 'Password'}))
@@ -16,15 +16,16 @@ class LoginForm(forms.Form):
 
 class RegisterForm(forms.Form):
     username = forms.CharField(
-        label="Username",
-        widget=forms.TextInput(attrs={'placeholder': 'Username', 'autofocus': ''})
+        label='',
+        widget=forms.TextInput(attrs={'class': 'pure-input-1', 'placeholder': 'Username', 'autofocus': ''})
     )
     email = forms.EmailField(
-        label="Email",
-        widget=forms.EmailInput(attrs={'placeholder': 'Email'})
+        label='',
+        widget=forms.EmailInput(attrs={'class': 'pure-input-1', 'placeholder': 'Email'})
     )
     password = forms.CharField(
-        widget=forms.PasswordInput(attrs={'placeholder': 'Password'}))
+        label='',
+        widget=forms.PasswordInput(attrs={'class': 'pure-input-1', 'placeholder': 'Password'}))
 
     def clean_username(self):
         username = self.cleaned_data.get("username")
